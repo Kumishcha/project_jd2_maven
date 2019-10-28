@@ -12,100 +12,100 @@ public interface UserDAO {
 
 	/**
 	 * 
-	 * @param unknownId
+	 * @param unknownId as a int
 	 * @return the user with the given id
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	User findUserById(int unknownId) throws DAOException;
 
 	/**
 	 * 
-	 * @param login
+	 * @param login as a String
 	 * @return the user with the given login
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	User findUserByLogin(String login) throws DAOException;
 
 	/**
 	 * 
-	 * @param user
+	 * @param user as a RegistrationInfo
 	 * @return the registered user
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	User registration(RegistrationInfo user) throws DAOException;
 
 	/**
 	 * 
-	 * @param login
-	 * @param password
+	 * @param login as a String
+	 * @param password as a String
 	 * @return the authorized user
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	User authorization(String login, String password) throws DAOException;
 
 	/**
 	 * 
 	 * @return a list of all users
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	List<InfoAboutUserAndAccount> viewAllUsers() throws DAOException;
 
 	/**
 	 * 
-	 * @param idUser
+	 * @param idUser as a int
 	 * @return information about the user and his account
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	InfoAboutUserAndAccount takeInfo(int idUser) throws DAOException;
 
 	/**
 	 * 
-	 * @param idUser
+	 * @param idUser as a int
 	 * @return true, if user's role has changed
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	boolean changeRole(int idUser) throws DAOException;
 
 	/**
 	 * 
-	 * @param idUser
+	 * @param idUser as a int
 	 * @return true, if user's account has blocked
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	boolean isBlockedAccount(int idUser) throws DAOException;
 
 	/**
 	 * 
-	 * @param idUser
+	 * @param idUser as a int
 	 * @return true, if user's account has unblocked
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	boolean isUnblockedAccount(int idUser) throws DAOException;
 
 	/**
 	 * 
-	 * @param idUser
+	 * @param idUser as a int
 	 * @return user's account with the given user's id
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	Account take(int idUser) throws DAOException;
 
 	/**
 	 * 
-	 * @param idUser
-	 * @param count
+	 * @param idUser as a int
+	 * @param count as a int
 	 * @return an account with a modified value
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	Account addAmount(int idUser, int count) throws DAOException;
 
 	/**
 	 * 
-	 * @param idUser
-	 * @param priceResult
-	 * @param numberOrder
+	 * @param idUser as a int
+	 * @param priceResult as a int
+	 * @param numberOrder as a int
 	 * @return true, if order has been paid
-	 * @throws DAOException
+	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
 	boolean orderPayment(int idUser, int priceResult, int numberOrder) throws DAOException;
 }

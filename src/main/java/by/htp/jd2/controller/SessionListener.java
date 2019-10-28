@@ -25,8 +25,7 @@ public class SessionListener implements HttpSessionListener {
 	private static final Logger log = Logger.getLogger(SessionListener.class);
 
 	public void sessionCreated(HttpSessionEvent se) {
-		log.debug("sessionCreated");
-		//info("sessionCreated");
+		//log.info("sessionCreated");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -67,7 +66,7 @@ public class SessionListener implements HttpSessionListener {
 			}
 
 		}
-		log.info("sessionDestroyed");
+		//log.info("sessionDestroyed");
 	}
 
 }
