@@ -63,7 +63,7 @@
  * min sugar = 20<br>
  * min coconut syrup = 100<br>
  * min cherry syrup = 100<br>
- * min water = 10000<br>
+ * min water = 1000<br>
  </div>
  </div>
  	<m:today/>

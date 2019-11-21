@@ -88,6 +88,7 @@ public class PoolConnection {
 		
 		while(iter.hasNext()) {
 			try {
+				
 				iter.next().close();
 			} catch (SQLException e) {
 				throw new RuntimeException();

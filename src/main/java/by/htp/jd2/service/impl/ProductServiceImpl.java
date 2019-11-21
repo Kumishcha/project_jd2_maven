@@ -87,11 +87,10 @@ public class ProductServiceImpl implements ProductService {
 		try {
 	
 			count = Integer.parseInt(productCount);
-			productsDAO.increaseQuantityInStock(productName, count);
+			return productsDAO.increaseQuantityInStock(productName, count);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
-		return true;
 	}
 
 	@Override
@@ -104,12 +103,11 @@ public class ProductServiceImpl implements ProductService {
 		}
 		try {
 			price = Integer.parseInt(newPrice);
-			productsDAO.changePriceOfProducts(productName, price);
+			return productsDAO.changePriceOfProducts(productName, price);
 			
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
-		return true;
 	}
 
 	

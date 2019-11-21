@@ -32,7 +32,7 @@ public class TestDAOUpdate {
 		User user;
 		boolean expected;
 		
-		user = new User(3, "Маша", "Попова", "m@gmail.com", "client", 2);
+		user = new User(3, "Елена", "Иванова", "llll@gmail.com", "client", 2);
 
 		expected = userDao.changeRole(user.getUserId());
 		

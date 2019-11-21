@@ -23,14 +23,14 @@ public class UserServiceImpl implements UserService {
 	private static final UserDAO userDao = DaoProvider.getInstance().getUserDao();
 	private static final OrdersDAO ordersDAO = DaoProvider.getInstance().getOrdersDAO();
 	private static final ProductsDAO productsDAO = DaoProvider.getInstance().getProductsDAO();
-	
+
 	@Override
 	public User findUserByLogin(String login) throws ServiceException {
-		
+
 		User user;
 		try {
 			user = userDao.findUserByLogin(login);
-			
+
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
@@ -40,14 +40,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User authorization(String login, String password) throws ServiceException {
-		
+
 		User user;
 		String newPassword;
-		
+
 		try {
 			newPassword = hashPassword(password);
 			user = userDao.authorization(login, newPassword);
-			
+
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
@@ -57,42 +57,42 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User registration(String name, String surname, String email, String login, String password)
-			throws ServiceException, ValidationServiceException{
-		
+			throws ServiceException, ValidationServiceException {
+
 		String newPassword;
 		User user;
-		
-		if (!validator.check(email,password)){
-			
+
+		if (!validator.check(email, password)) {
+
 			throw new ValidationServiceException();
-			
+
 		}
-		
+
 		newPassword = hashPassword(password);
 		RegistrationInfo info = new RegistrationInfo(name, surname, email, login, newPassword);
-		
+
 		try {
-			
+
 			user = userDao.registration(info);
-		
+
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
 
 		return user;
 	}
-	
+
 	@Override
 	public InfoAboutUserAndAccount takeInfo(int idUser) throws ServiceException {
 
 		InfoAboutUserAndAccount info;
-		
+
 		try {
 			info = userDao.takeInfo(idUser);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
-		
+
 		return info;
 	}
 
@@ -113,31 +113,28 @@ public class UserServiceImpl implements UserService {
 	public boolean changeRole(int idUser) throws ServiceException {
 
 		try {
-			userDao.changeRole(idUser);
+			return userDao.changeRole(idUser);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
-		return true;
 	}
 
 	@Override
 	public boolean isBlockedAccount(int idUser) throws ServiceException {
 		try {
-			userDao.isBlockedAccount(idUser);
+			return userDao.isBlockedAccount(idUser);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
-		return true;
 	}
 
 	@Override
 	public boolean isUnblockedAccount(int idUser) throws ServiceException {
 		try {
-			userDao.isUnblockedAccount(idUser);
+			return userDao.isUnblockedAccount(idUser);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
-		return true;
 	}
 
 	@Override
@@ -155,8 +152,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Account addAmount(int idUser, String count1) throws ServiceException, ValidationServiceException {
-		
-		if (!validator.check(count1)){
+
+		if (!validator.check(count1)) {
 			throw new ValidationServiceException("ValidationServiceException");
 		}
 
@@ -186,11 +183,11 @@ public class UserServiceImpl implements UserService {
 				return false;
 			}
 			listDrinksInOrder = ordersDAO.takeDrinkInOrderList(numberOrder);
-			
-			for(DrinkInOrder drinkInOrder:listDrinksInOrder) {
-				
+
+			for (DrinkInOrder drinkInOrder : listDrinksInOrder) {
+
 				productsDAO.changeQuantityOfProducts(drinkInOrder.getCount(), drinkInOrder.getDrinkId());
-			
+
 			}
 
 		} catch (DAOException e) {
@@ -200,12 +197,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	private String hashPassword(String password) {
-		
+
 		String newPassword = password + "1";
 		return newPassword;
-		
-	}
 
-	
+	}
 
 }
