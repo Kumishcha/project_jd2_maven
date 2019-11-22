@@ -5,14 +5,14 @@ public class Product {
 	private int productId;
     private String productName;
     private int quantityInStock;
-    private int price;
+    private double price;
     private String userRole;
     
 	public Product() {
 		
 	}
 
-	public Product(int productId, String productName, int quantityInStock, int price, String userRole) {
+	public Product(int productId, String productName, int quantityInStock, double price, String userRole) {
 		
 		this.productId = productId;
 		this.productName = productName;
@@ -47,11 +47,11 @@ public class Product {
 		this.quantityInStock = quantityInStock;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -67,9 +67,11 @@ public class Product {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + price;
-		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + productId;
+		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
 		result = prime * result + quantityInStock;
 		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		return result;
@@ -84,14 +86,14 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		if (price != other.price)
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		if (productId != other.productId)
 			return false;
 		if (productName == null) {
 			if (other.productName != null)
 				return false;
 		} else if (!productName.equals(other.productName))
-			return false;
-		if (productId != other.productId)
 			return false;
 		if (quantityInStock != other.quantityInStock)
 			return false;

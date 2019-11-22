@@ -27,6 +27,6 @@ public interface DrinkService {
 	 * @return the price of the drink
 	 * @throws ServiceException if DAOException occurs
 	 */
-	int drinkPrice(Drink drink) throws ServiceException;
+	double drinkPrice(Drink drink) throws ServiceException;
 
 }

@@ -93,19 +93,19 @@ public interface UserDAO {
 	/**
 	 * 
 	 * @param idUser as a int
-	 * @param count as a int
+	 * @param count as a double
 	 * @return an account with a modified value
 	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
-	Account addAmount(int idUser, int count) throws DAOException;
+	Account addAmount(int idUser, double count) throws DAOException;
 
 	/**
 	 * 
 	 * @param idUser as a int
-	 * @param priceResult as a int
+	 * @param priceResult as a double
 	 * @param numberOrder as a int
 	 * @return true, if order has been paid
 	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
-	boolean orderPayment(int idUser, int priceResult, int numberOrder) throws DAOException;
+	boolean orderPayment(int idUser, double priceResult, int numberOrder) throws DAOException;
 }

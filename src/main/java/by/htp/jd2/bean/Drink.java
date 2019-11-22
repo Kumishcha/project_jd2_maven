@@ -9,15 +9,15 @@ public class Drink {
 	private int countOfSugar;
 	private int countOfSyrup;
 	private int typeOfSyrup;
-	private int cost;
+	private double cost;
 
 	public Drink() {
 
 	}
 
 	public Drink(int drinkId, int fortress, int typeOfCoffee, int volumeOfDrink, int countOfSugar, int countOfSyrup,
-			int typeOfSyrup, int cost) {
-	
+			int typeOfSyrup, double cost) {
+
 		this.drinkId = drinkId;
 		this.fortress = fortress;
 		this.typeOfCoffee = typeOfCoffee;
@@ -84,19 +84,21 @@ public class Drink {
 		this.typeOfSyrup = typeOfSyrup;
 	}
 
-	public int getCost() {
+	public double getCost() {
 		return cost;
 	}
 
-	public void setCost(int cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + cost;
+		long temp;
+		temp = Double.doubleToLongBits(cost);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + countOfSugar;
 		result = prime * result + countOfSyrup;
 		result = prime * result + drinkId;
@@ -116,7 +118,7 @@ public class Drink {
 		if (getClass() != obj.getClass())
 			return false;
 		Drink other = (Drink) obj;
-		if (cost != other.cost)
+		if (Double.doubleToLongBits(cost) != Double.doubleToLongBits(other.cost))
 			return false;
 		if (countOfSugar != other.countOfSugar)
 			return false;
@@ -137,8 +139,8 @@ public class Drink {
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [drinkId=" + drinkId + ", fortress=" + fortress + ", typeOfCoffee=" + typeOfCoffee
-				+ ", volumeOfDrink=" + volumeOfDrink + ", countOfSugar=" + countOfSugar + ", countOfSyrup="
-				+ countOfSyrup + ", typeOfSyrup=" + typeOfSyrup + ", cost=" + cost + "]";
+		return this.getClass().getSimpleName() + " [drinkId=" + drinkId + ", fortress=" + fortress + ", typeOfCoffee="
+				+ typeOfCoffee + ", volumeOfDrink=" + volumeOfDrink + ", countOfSugar=" + countOfSugar
+				+ ", countOfSyrup=" + countOfSyrup + ", typeOfSyrup=" + typeOfSyrup + ", cost=" + cost + "]";
 	}
 }

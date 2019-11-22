@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public DrinkInOrder addDrinkToOrder(Drink drink, String typeOfCoffee, int numberOrder) throws ServiceException {
 
-		int price;
+		double price;
 
 		DrinkInOrder newDrinkInOrder = new DrinkInOrder();
 
@@ -155,9 +155,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public int takePriceResult(int numberOrder) throws ServiceException {
+	public double takePriceResult(int numberOrder) throws ServiceException {
 
-		int priceResult;
+		double priceResult;
 
 		try {
 			priceResult = ordersDAO.calculateThePriceResult(numberOrder);
@@ -170,7 +170,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public boolean addThePriceResultInOrder(int priceResult, int numberOrder) throws ServiceException {
+	public boolean addThePriceResultInOrder(double priceResult, int numberOrder) throws ServiceException {
 
 		try {
 

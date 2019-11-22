@@ -158,10 +158,10 @@ public class UserServiceImpl implements UserService {
 		}
 
 		Account account;
-		int count;
+		double count;
 
 		try {
-			count = Integer.parseInt(count1);
+			count = Double.parseDouble(count1);
 			account = userDao.addAmount(idUser, count);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
@@ -171,7 +171,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean orderPayment(int idUser, int priceResult, int numberOrder) throws ServiceException {
+	public boolean orderPayment(int idUser, double priceResult, int numberOrder) throws ServiceException {
 
 		boolean add;
 		List<DrinkInOrder> listDrinksInOrder;

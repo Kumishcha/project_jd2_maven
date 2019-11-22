@@ -34,8 +34,8 @@ public class OrderCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		int numberOrder;
-		int balance;
-		int priceResult;
+		double balance;
+		double priceResult;
 		
 		User user;
 		Order order;

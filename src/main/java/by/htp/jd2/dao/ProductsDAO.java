@@ -34,11 +34,11 @@ public interface ProductsDAO {
 	/**
 	 * 
 	 * @param productName as a String 
-	 * @param price as a int
+	 * @param price as a double
 	 * @return true, if price has been changed
 	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
-	boolean changePriceOfProducts(String productName, int price) throws DAOException;
+	boolean changePriceOfProducts(String productName, double price) throws DAOException;
 
 	/**
 	 * 

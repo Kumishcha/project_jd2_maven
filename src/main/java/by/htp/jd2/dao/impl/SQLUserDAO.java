@@ -556,7 +556,7 @@ public class SQLUserDAO implements UserDAO {
 			}
 
 			newAccount.setAccountId(rs.getInt(1));
-			newAccount.setBalance(rs.getInt(2));
+			newAccount.setBalance(rs.getDouble(2));
 			newAccount.setBlocked(rs.getBoolean(3));
 
 		} catch (InterruptedException e) {
@@ -588,13 +588,13 @@ public class SQLUserDAO implements UserDAO {
 	}
 
 	@Override
-	public Account addAmount(int idUser, int count) throws DAOException {
+	public Account addAmount(int idUser, double count) throws DAOException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		PreparedStatement ps1 = null;
 		ResultSet rs = null;
-		int newBalance;
+		double newBalance;
 
 		Account account;
 
@@ -606,7 +606,7 @@ public class SQLUserDAO implements UserDAO {
 
 			ps = con.prepareStatement(FinalStringInsert.qUPDATE_ACCOUNT_BALANCE);
 
-			ps.setInt(1, newBalance);
+			ps.setDouble(1, newBalance);
 			ps.setInt(2, account.getAccountId());
 			ps.executeUpdate();
 
@@ -654,13 +654,13 @@ public class SQLUserDAO implements UserDAO {
 	}
 
 	@Override
-	public boolean orderPayment(int idUser,int priceResult, int numberOrder) throws DAOException {
+	public boolean orderPayment(int idUser,double priceResult, int numberOrder) throws DAOException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		
 		Account newAccount = new Account();
-		int balance;
+		double balance;
 
 		newAccount = take(idUser);
 		balance = newAccount.getBalance();

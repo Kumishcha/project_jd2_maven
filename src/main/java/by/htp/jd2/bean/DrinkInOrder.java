@@ -5,7 +5,7 @@ public class DrinkInOrder {
 	private int ordersHasDrinkId;
 	private int drinkId;
 	private String typeOfCoffee;
-	private int price;
+	private double price;
 	private int count;
 	private int numberOrder;
 	
@@ -13,7 +13,7 @@ public class DrinkInOrder {
 	public DrinkInOrder() {
 	}
 
-	public DrinkInOrder(int ordersHasDrinkId, int drinkId, String typeOfCoffee, int price, int count, int numberOrder) {
+	public DrinkInOrder(int ordersHasDrinkId, int drinkId, String typeOfCoffee, double price, int count, int numberOrder) {
 		
 		this.ordersHasDrinkId = ordersHasDrinkId;
 		this.drinkId = drinkId;
@@ -47,11 +47,11 @@ public class DrinkInOrder {
 		this.typeOfCoffee = typeOfCoffee;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -79,7 +79,9 @@ public class DrinkInOrder {
 		result = prime * result + drinkId;
 		result = prime * result + numberOrder;
 		result = prime * result + ordersHasDrinkId;
-		result = prime * result + price;
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((typeOfCoffee == null) ? 0 : typeOfCoffee.hashCode());
 		return result;
 	}
@@ -101,7 +103,7 @@ public class DrinkInOrder {
 			return false;
 		if (ordersHasDrinkId != other.ordersHasDrinkId)
 			return false;
-		if (price != other.price)
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		if (typeOfCoffee == null) {
 			if (other.typeOfCoffee != null)

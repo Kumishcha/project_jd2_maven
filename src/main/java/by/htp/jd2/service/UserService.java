@@ -108,7 +108,7 @@ public interface UserService {
 	 * @return true, if the order has been paid
 	 * @throws ServiceException if DAOException occurs
 	 */
-	boolean orderPayment(int idUser,int priceResult, int numberOrder) throws ServiceException;
+	boolean orderPayment(int idUser,double priceResult, int numberOrder) throws ServiceException;
 	
 
 }

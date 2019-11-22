@@ -38,7 +38,7 @@ public class RemoveDrinkCommand implements Command {
 		
 		int drinkId;
 		int numberOrder;
-		int balance;
+		double balance;
 
 		User user;
 		Account account;

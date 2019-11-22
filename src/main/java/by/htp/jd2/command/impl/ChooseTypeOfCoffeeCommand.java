@@ -31,7 +31,7 @@ public class ChooseTypeOfCoffeeCommand implements Command {
 
 		String typeOfCoffee;
 		
-		int balance;
+		double balance;
 		
 		User user;
 		Account account;

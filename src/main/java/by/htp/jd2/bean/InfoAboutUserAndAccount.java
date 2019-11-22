@@ -8,14 +8,14 @@ public class InfoAboutUserAndAccount {
 	private String email;
 	private String role;
 	private int accountId;
-	private int balance;
+	private double balance;
 	private boolean blocked;
 	
 	public InfoAboutUserAndAccount() {
 	}
 
 	public InfoAboutUserAndAccount(int userId, String name, String surname, String email, String role, int accountId,
-			int balance, boolean blocked) {
+			double balance, boolean blocked) {
 		
 		this.userId = userId;
 		this.name = name;
@@ -75,11 +75,11 @@ public class InfoAboutUserAndAccount {
 		this.accountId = accountId;
 	}
 
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 
@@ -96,7 +96,9 @@ public class InfoAboutUserAndAccount {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + accountId;
-		result = prime * result + balance;
+		long temp;
+		temp = Double.doubleToLongBits(balance);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + (blocked ? 1231 : 1237);
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -117,7 +119,7 @@ public class InfoAboutUserAndAccount {
 		InfoAboutUserAndAccount other = (InfoAboutUserAndAccount) obj;
 		if (accountId != other.accountId)
 			return false;
-		if (balance != other.balance)
+		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
 			return false;
 		if (blocked != other.blocked)
 			return false;

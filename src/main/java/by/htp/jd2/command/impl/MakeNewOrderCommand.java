@@ -32,7 +32,7 @@ public class MakeNewOrderCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		int balance;
+		double balance;
 		int numberOrder;
 		
 		User user;

@@ -96,13 +96,13 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public boolean changePriceOfProducts(String productName, String newPrice) throws ServiceException, ValidationServiceException {
 
-		int price;
+		double price;
 		
 		if (!validator.checkPrice(newPrice)){
 			throw new ValidationServiceException();
 		}
 		try {
-			price = Integer.parseInt(newPrice);
+			price = Double.parseDouble(newPrice);
 			return productsDAO.changePriceOfProducts(productName, price);
 			
 		} catch (DAOException e) {

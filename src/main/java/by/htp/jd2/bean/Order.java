@@ -4,13 +4,13 @@ public class Order {
 	
 	private int numberOrder;
 	private int userId;
-	private int priceResult;
+	private double priceResult;
 	private boolean status;
 	
 	public Order() {
 	}
 
-	public Order(int numberOrder, int userId, int priceResult, boolean status) {
+	public Order(int numberOrder, int userId, double priceResult, boolean status) {
 		
 		this.numberOrder = numberOrder;
 		this.userId = userId;
@@ -34,11 +34,11 @@ public class Order {
 		this.userId = userId;
 	}
 
-	public int getPriceResult() {
+	public double getPriceResult() {
 		return priceResult;
 	}
 
-	public void setPriceResult(int priceResult) {
+	public void setPriceResult(double priceResult) {
 		this.priceResult = priceResult;
 	}
 
@@ -55,7 +55,9 @@ public class Order {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + numberOrder;
-		result = prime * result + priceResult;
+		long temp;
+		temp = Double.doubleToLongBits(priceResult);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + (status ? 1231 : 1237);
 		result = prime * result + userId;
 		return result;
@@ -72,7 +74,7 @@ public class Order {
 		Order other = (Order) obj;
 		if (numberOrder != other.numberOrder)
 			return false;
-		if (priceResult != other.priceResult)
+		if (Double.doubleToLongBits(priceResult) != Double.doubleToLongBits(other.priceResult))
 			return false;
 		if (status != other.status)
 			return false;

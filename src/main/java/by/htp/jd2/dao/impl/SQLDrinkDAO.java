@@ -113,7 +113,7 @@ public class SQLDrinkDAO implements DrinkDAO {
 	}
 	@SuppressWarnings("null")
 	@Override
-	public int drinkPrice(int drinkId) throws DAOException {
+	public double drinkPrice(int drinkId) throws DAOException {
 
 		int fortress;
 		int typeOfCoffeeId;
@@ -126,16 +126,16 @@ public class SQLDrinkDAO implements DrinkDAO {
 		int countOfSyrup;
 		int typeOfSyrupId;
 		int baseAmountOfCoffee;
-		int priceCoffee;
+		double priceCoffee;
 		int baseAmountOfMilk;
-		int priceMilk;
+		double priceMilk;
 		int baseAmountOfWater;
-		int priceWater;
+		double priceWater;
 		int baseAmountOfSugar;
-		int priceSugar;
+		double priceSugar;
 		int baseAmountOfSyrup;
-		int priceSyrup;
-		int price;
+		double priceSyrup;
+		double price;
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -243,9 +243,9 @@ public class SQLDrinkDAO implements DrinkDAO {
 		return baseAmount;
 	}
 
-	protected int price(int id, String b) throws DAOException {
+	protected double price(int id, String b) throws DAOException {
 
-		int price;
+		double price;
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -262,7 +262,7 @@ public class SQLDrinkDAO implements DrinkDAO {
 
 			rs.next();
 					
-			price = rs.getInt(4);
+			price = rs.getDouble(4);
 
 		} catch (InterruptedException e) {
 

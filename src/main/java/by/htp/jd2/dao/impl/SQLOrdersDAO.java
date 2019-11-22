@@ -38,7 +38,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 			while (rs.next()) {
 				DrinkInOrder drinkInOrder = new DrinkInOrder();
 				drinkInOrder.setDrinkId(rs.getInt(2));
-				drinkInOrder.setPrice(rs.getInt(3));
+				drinkInOrder.setPrice(rs.getDouble(3));
 				drinkInOrder.setCount(rs.getInt(4));
 				drinkInOrder.setNumberOrder(rs.getInt(5));
 				listDrinksInOrder.add(drinkInOrder);
@@ -104,7 +104,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 				ps = con.prepareStatement(FinalStringInsert.qINSERT_ADD_DRINK_TO_ORDER);
 
 				ps.setInt(1, drinkInOrder.getDrinkId());
-				ps.setInt(2, drinkInOrder.getPrice());
+				ps.setDouble(2, drinkInOrder.getPrice());
 				ps.setInt(3, drinkInOrder.getCount());
 				ps.setInt(4, drinkInOrder.getNumberOrder());
 				ps.executeUpdate();
@@ -235,14 +235,14 @@ public class SQLOrdersDAO implements OrdersDAO {
 	}
 
 	@Override
-	public int calculateThePriceResult(int numberOrder) throws DAOException {
+	public double calculateThePriceResult(int numberOrder) throws DAOException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 
-		int priceResult = 0;
-		int i = 0;
+		double priceResult = 0;
+		double i = 0;
 
 		try {
 			con = pc.take();
@@ -254,7 +254,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 
 			while (rs.next()) {
 
-				i = rs.getInt(3) * rs.getInt(4);
+				i = rs.getDouble(3) * rs.getInt(4);
 				priceResult = priceResult + i;
 			}
 
@@ -281,7 +281,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 	}
 
 	@Override
-	public boolean addThePriceResultInOrder(int priceResult, int numberOrder) throws DAOException {
+	public boolean addThePriceResultInOrder(double priceResult, int numberOrder) throws DAOException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -303,7 +303,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 
 			ps1 = con.prepareStatement(FinalStringInsert.qUPDATE_ORDERS);
 
-			ps1.setInt(1, priceResult);
+			ps1.setDouble(1, priceResult);
 			ps1.setInt(2, numberOrder);
 
 			ps1.executeUpdate();
@@ -359,7 +359,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 			}
 			newOrder.setNumberOrder(rs.getInt(1));
 			newOrder.setUserId(rs.getInt(2));
-			newOrder.setPriceResult(rs.getInt(3));
+			newOrder.setPriceResult(rs.getDouble(3));
 			newOrder.setStatus(rs.getBoolean(4));
 
 		} catch (InterruptedException e) {
@@ -406,7 +406,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 				Order newOrder = new Order();
 				newOrder.setNumberOrder(rs.getInt(1));
 				newOrder.setUserId(rs.getInt(2));
-				newOrder.setPriceResult(rs.getInt(3));
+				newOrder.setPriceResult(rs.getDouble(3));
 				newOrder.setStatus(rs.getBoolean(4));
 				orders.add(newOrder);
 			}

@@ -39,7 +39,7 @@ public class SQLProductsDAO implements ProductsDAO {
 			newProduct.setProductId(rs.getInt(1));
 			newProduct.setProductName(rs.getString(2));
 			newProduct.setQuantityInStock(rs.getInt(3));
-			newProduct.setPrice(rs.getInt(4));
+			newProduct.setPrice(rs.getDouble(4));
 
 		} catch (InterruptedException e) {
 
@@ -83,7 +83,7 @@ public class SQLProductsDAO implements ProductsDAO {
 				product.setProductId(rs.getInt(1));
 				product.setProductName(rs.getString(2));
 				product.setQuantityInStock(rs.getInt(3));
-				product.setPrice(rs.getInt(4));
+				product.setPrice(rs.getDouble(4));
 				product.setUserRole(rs.getString(5));
 				products.add(product);
 
@@ -157,7 +157,7 @@ public class SQLProductsDAO implements ProductsDAO {
 	}
 
 	@Override
-	public boolean changePriceOfProducts(String productName, int price) throws DAOException {
+	public boolean changePriceOfProducts(String productName, double price) throws DAOException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -175,7 +175,7 @@ public class SQLProductsDAO implements ProductsDAO {
 
 			ps = con.prepareStatement(FinalStringInsert.qUPDATE_PRICE_IN_STOCK);
 
-			ps.setInt(1, price);
+			ps.setDouble(1, price);
 			ps.setString(2, productName);
 			ps.executeUpdate();
 

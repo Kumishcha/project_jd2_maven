@@ -44,15 +44,18 @@ public class UserDataValidator {
 		String regexCount;
 		Pattern patternCount;
 		Matcher matcherCount;
-		int count;
-
-		regexCount = "^\\d*{1,5}$";
+		double count;
+		
+		regexCount ="^\\d*[.,]?\\d{1,2}$";
+		
 		patternCount = Pattern.compile(regexCount);
 		matcherCount = patternCount.matcher(count1);
-
+	
 		if (matcherCount.matches()) {
-			count = Integer.parseInt(count1);
+			count = Double.parseDouble(count1);
+	
 			if (count > 10000 || count < 0) {
+			
 				return false;
 			}
 			return true;
@@ -65,14 +68,14 @@ public class UserDataValidator {
 		String regexCount;
 		Pattern patternCount;
 		Matcher matcherCount;
-		int count;
+		double count;
 
-		regexCount = "^\\d*{1,5}$";
+		regexCount = "^\\d*[.,]?\\d{1,2}$";
 		patternCount = Pattern.compile(regexCount);
 		matcherCount = patternCount.matcher(newPrice);
 
 		if (matcherCount.matches()) {
-			count = Integer.parseInt(newPrice);
+			count = Double.parseDouble(newPrice);
 			if (count > 10 || count < 0) {
 				return false;
 			}

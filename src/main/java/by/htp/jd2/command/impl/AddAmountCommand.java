@@ -34,7 +34,7 @@ public class AddAmountCommand implements Command {
 		String count1;
 		String incorrectCountFormat;
 
-		int balance;
+		double balance;
 
 		User user;
 		Account account;

@@ -33,8 +33,8 @@ public class PayForOrderCommand implements Command {
 		String notEnoughMoney;
 		
 		int numberOrder;
-		int balance;
-		int priceResult;
+		double balance;
+		double priceResult;
 
 		User user;
 		Order order;

@@ -24,6 +24,6 @@ public interface DrinkDAO {
 	 * @return the price of the drink
 	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
-	int drinkPrice(int drinkId) throws DAOException;
+	double drinkPrice(int drinkId) throws DAOException;
 	
 }

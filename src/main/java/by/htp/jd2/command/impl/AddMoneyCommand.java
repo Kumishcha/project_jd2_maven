@@ -27,7 +27,7 @@ public class AddMoneyCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-		int balance;
+		double balance;
 				
 		User user;
 		Account account;

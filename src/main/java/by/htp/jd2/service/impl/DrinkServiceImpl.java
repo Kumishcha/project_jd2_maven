@@ -4,7 +4,6 @@ import by.htp.jd2.bean.Drink;
 import by.htp.jd2.dao.DaoProvider;
 import by.htp.jd2.dao.DrinkDAO;
 import by.htp.jd2.dao.impl.DAOException;
-import by.htp.jd2.dao.pool.PoolConnection;
 import by.htp.jd2.service.DrinkService;
 import by.htp.jd2.service.validation.UserDataValidator;
 import by.htp.jd2.service.validation.ValidationServiceException;
@@ -40,10 +39,10 @@ public class DrinkServiceImpl implements DrinkService {
 	}
 
 	@Override
-	public int drinkPrice(Drink drink) throws ServiceException {
+	public double drinkPrice(Drink drink) throws ServiceException {
 
 		int drinkId;
-		int price;
+		double price;
 
 		try {
 

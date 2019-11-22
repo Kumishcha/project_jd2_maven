@@ -46,16 +46,16 @@ public interface OrdersDAO {
 	 * @return  the result price
 	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
-	int calculateThePriceResult(int numberOrder) throws DAOException;
+	double calculateThePriceResult(int numberOrder) throws DAOException;
 
 	/**
 	 * 
-	 * @param priceResult as a int 
+	 * @param priceResult as a double 
 	 * @param numberOrder as a int 
 	 * @return true, if the result price is filled to the database successfully
 	 * @throws DAOException if SQLException or InterruptedException occurs
 	 */
-	boolean addThePriceResultInOrder(int priceResult, int numberOrder) throws DAOException;
+	boolean addThePriceResultInOrder(double priceResult, int numberOrder) throws DAOException;
 
 	/**
 	 * 

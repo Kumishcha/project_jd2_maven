@@ -24,7 +24,7 @@
 				<c:out value="${requestScope.welcomeMessage}"></c:out>
 			</h2>
 			<h3>Balance ${requestScope.balance}</h3>
-			<form action="controller" method="get">
+			<form action="controller" method="post">
 				<input type="hidden" name="command" value="add-money" />
 				<button type="submit">Add money to the account</button>
 			</form>

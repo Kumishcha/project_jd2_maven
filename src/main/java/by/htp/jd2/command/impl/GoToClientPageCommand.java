@@ -30,7 +30,7 @@ public class GoToClientPageCommand implements Command {
 		String messageCountOfDrink;
 		String message;
 			
-		int balance;
+		double balance;
 			
 		User user;
 		Account account;

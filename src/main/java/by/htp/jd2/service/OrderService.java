@@ -74,16 +74,16 @@ public interface OrderService {
 	 * @return a result price
 	 * @throws ServiceException if DAOException occurs
 	 */
-	int takePriceResult(int numberOrder)throws ServiceException;
+	double takePriceResult(int numberOrder)throws ServiceException;
 	
 	/**
 	 * 
-	 * @param priceResult as a int
+	 * @param priceResult as a double
 	 * @param numberOrder as a int
 	 * @return true, if the result price is filled to the database successfully
 	 * @throws ServiceException if DAOException occurs
 	 */
-	boolean addThePriceResultInOrder(int priceResult, int numberOrder) throws ServiceException;
+	boolean addThePriceResultInOrder(double priceResult, int numberOrder) throws ServiceException;
 	
 	/**
 	 * 

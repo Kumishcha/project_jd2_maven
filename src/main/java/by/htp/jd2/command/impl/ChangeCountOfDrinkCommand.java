@@ -39,7 +39,7 @@ public class ChangeCountOfDrinkCommand implements Command {
 		
 		int numberOrder;
 		int drinkId;
-		int balance;
+		double balance;
 
 		User user;
 		Account account;
