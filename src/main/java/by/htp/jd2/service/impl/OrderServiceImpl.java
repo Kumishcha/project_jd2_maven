@@ -66,20 +66,28 @@ public class OrderServiceImpl implements OrderService {
 		} else {
 
 			if (oldListDrinksInOrder.size() == 3) {
-				throw new ValidationServiceException();
+				for (int i = 0; i < oldListDrinksInOrder.size(); i++) {
+					if (newDrinkInOrder.getDrinkId() != oldListDrinksInOrder.get(i).getDrinkId()) {
+						throw new ValidationServiceException();
+					}
+				}
 			} else {
 
-				for (DrinkInOrder drinkInOrder : oldListDrinksInOrder) {
-					if (drinkInOrder.getDrinkId() == newDrinkInOrder.getDrinkId()) {
-						if (drinkInOrder.getCount() < maxCount) {
-							drinkInOrder.setCount(drinkInOrder.getCount() + 1);
+				for (int i = 0; i < oldListDrinksInOrder.size(); i++) {
+					if (newDrinkInOrder.getDrinkId() == oldListDrinksInOrder.get(i).getDrinkId()) {
+						if (oldListDrinksInOrder.get(i).getCount() < maxCount) {
+							
+							oldListDrinksInOrder.get(i).setCount(oldListDrinksInOrder.get(i).getCount() + 1);
 						} else {
 							throw new ValidationServiceException();
 						}
-					} else {
-						oldListDrinksInOrder.add(newDrinkInOrder);
-						break;
+						return oldListDrinksInOrder;
 					}
+				}
+				if (oldListDrinksInOrder.size() < 3) {
+					
+					oldListDrinksInOrder.add(newDrinkInOrder);
+				
 				}
 			}
 		}
