@@ -1,5 +1,7 @@
 package by.htp.jd2.dao.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -595,6 +597,7 @@ public class SQLUserDAO implements UserDAO {
 		PreparedStatement ps1 = null;
 		ResultSet rs = null;
 		double newBalance;
+		double newBalance1;
 
 		Account account;
 
@@ -603,10 +606,12 @@ public class SQLUserDAO implements UserDAO {
 
 			account = take(idUser);
 			newBalance = account.getBalance() + count;
+			
+			newBalance1 = new BigDecimal(newBalance).setScale(2, RoundingMode.UP).doubleValue();
 
 			ps = con.prepareStatement(FinalStringInsert.qUPDATE_ACCOUNT_BALANCE);
 
-			ps.setDouble(1, newBalance);
+			ps.setDouble(1, newBalance1);
 			ps.setInt(2, account.getAccountId());
 			ps.executeUpdate();
 

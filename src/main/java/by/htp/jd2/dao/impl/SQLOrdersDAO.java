@@ -1,5 +1,7 @@
 package by.htp.jd2.dao.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,7 +54,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 				rs = ps1.executeQuery();
 
 				rs.next();
-						
+
 				drinkInOrder.setTypeOfCoffee(rs.getString(2));
 			}
 		} catch (InterruptedException e) {
@@ -243,6 +245,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 
 		double priceResult = 0;
 		double i = 0;
+		double newDouble = 0;
 
 		try {
 			con = pc.take();
@@ -257,6 +260,8 @@ public class SQLOrdersDAO implements OrdersDAO {
 				i = rs.getDouble(3) * rs.getInt(4);
 				priceResult = priceResult + i;
 			}
+
+			newDouble = new BigDecimal(priceResult).setScale(2, RoundingMode.UP).doubleValue();
 
 		} catch (InterruptedException e) {
 
@@ -277,7 +282,7 @@ public class SQLOrdersDAO implements OrdersDAO {
 			pc.release(con);
 		}
 
-		return priceResult;
+		return newDouble;
 	}
 
 	@Override
